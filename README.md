@@ -55,10 +55,13 @@ To run the notebooks locally, it is recommended to use Anaconda or a Python virt
 ### Clone the repository
 ```bash
 git clone https://github.com/your-username/repository-name.git
+```
 Install dependencies
+```bash
 pip install pandas numpy matplotlib seaborn yfinance
+```
 Open Jupyter Notebook
-jupyter notebook
+
 📈 Results and Conclusions
 Stocks:
 The notebook demonstrates how risk and return vary across different sectors (Technology, Energy, Healthcare) and how diversification impacts portfolio performance.
