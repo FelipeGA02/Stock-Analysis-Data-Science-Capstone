@@ -1,75 +1,59 @@
-This repository contains two main data analysis (Capstone) projects developed in Python, focused on distinct areas: Stock Market Analysis and Emergency Calls (911) Analysis.
+# Análise de carteira de ações e de chamadas de emergência (911)
 
-Below is a README.md template you can use in your GitHub repository.
+Dois projetos de ciência de dados em Jupyter Notebook: análise de risco e retorno de uma carteira de ações com dados do Yahoo Finance e análise exploratória de chamadas de emergência 911 do condado de Montgomery (Pensilvânia, EUA).
 
-# 📊 Data Science Capstone Projects
+## Problema que resolve e para quem
 
-This repository brings together practical data science projects exploring exploratory data analysis (EDA), data visualization, and financial concepts.
+- **Carteira de ações:** quem investe ou analisa investimentos precisa comparar ativos por retorno, volatilidade e retorno ajustado ao risco, e entender como a diversificação muda o resultado da carteira.
+- **Chamadas 911:** gestores de serviços de emergência precisam saber quais tipos de ocorrência são mais comuns e em que dias, meses e horários a demanda se concentra, para dimensionar equipes.
 
----
+Os notebooks foram desenvolvidos como atividade acadêmica (projeto *capstone*) e servem como exemplos práticos de análise exploratória, visualização e finanças quantitativas com Python.
 
-## 📂 Included Projects
+## Tecnologias utilizadas
 
-### 1. 📈 Stock Portfolio Analysis  
-**File:** `Stock-Analysis-Capstone-Project.ipynb`
+Python, Pandas, NumPy, Matplotlib, Seaborn, yfinance, SciPy (otimização da fronteira eficiente) e Jupyter Notebook.
 
-This project focuses on extracting and analyzing historical financial asset data using the **yfinance** library.
+## Projetos
 
-**Objective:**  
-Build a stock portfolio, analyze historical returns and volatility, and visualize asset performance over time.
+### 1. Análise de carteira de ações — `Stock-Analysis-Capstone-Project .ipynb`
 
-**Main Activities:**
-- Real-time data extraction via Yahoo Finance  
-- Daily and cumulative return calculations  
-- Risk vs. return analysis (Efficient Frontier)  
-- Visualization of adjusted closing prices and asset correlations  
+- Download de preços históricos com yfinance (ações como AAPL, JNJ, KO, TSLA e XOM, de 2018 a 2023).
+- Retornos diários e acumulados, histogramas de retornos e simulação de um investimento inicial.
+- Índice de Sharpe anualizado por ação.
+- Volume negociado e volume financeiro diário.
+- Análise técnica: média móvel de 60 dias e Bandas de Bollinger.
+- Retornos ponderados da carteira e fronteira eficiente de Markowitz (minimização da volatilidade para cada retorno-alvo).
 
-**Technologies:**  
-Python, Pandas, Matplotlib, Seaborn, yfinance
+### 2. Chamadas de emergência 911 — `DataCapstone_Project.ipynb`
 
----
+- Base pública do Kaggle com chamadas 911 do condado de Montgomery (PA), com latitude, longitude, CEP, município, título e data/hora.
+- Criação de atributos: motivo da chamada (EMS, Fire, Traffic) a partir do título; hora, mês e dia da semana a partir da data.
+- CEPs e municípios com mais chamadas, contagem por motivo, por dia da semana e por mês, tendência mensal com regressão linear (`lmplot`), mapas de calor e *clustermaps* de dia da semana x hora e dia da semana x mês.
+- Parte 2: análise exploratória de uma base de desempenho de estudantes (`students.csv`) com estatísticas descritivas, histogramas, *box plots*, dispersão e correlações.
 
-### 2. 🚨 911 Emergency Calls Analysis  
-**File:** `DataCapstone_Project.ipynb`
+## Como executar
 
-A detailed analysis of a Kaggle dataset containing emergency call records from Montgomery County, PA.
+Pré-requisitos: Python 3 e Jupyter Notebook (ou Anaconda).
 
-**Objective:**  
-Identify temporal and geographic patterns in emergency calls to understand the main service demands (EMS, Fire, Traffic).
-
-**Main Activities:**
-- Data processing and cleaning (Feature Engineering with DateTime objects)  
-- Identification of the most frequent call types  
-- Temporal analysis (calls by day of week, month, and hour)  
-- Basic geospatial visualization based on zip codes and townships  
-
-**Technologies:**  
-Python, Pandas, NumPy, Matplotlib, Seaborn
-
----
-
-## 🛠️ Installation and Requirements
-
-To run the notebooks locally, it is recommended to use Anaconda or a Python virtual environment.
-
-### Clone the repository
 ```bash
-git clone https://github.com/your-username/repository-name.git
+git clone https://github.com/FelipeGA02/Stock-Analysis-Data-Science-Capstone.git
+cd Stock-Analysis-Data-Science-Capstone
+pip install pandas numpy matplotlib seaborn yfinance scipy jupyter
+jupyter notebook
 ```
-Install dependencies
-```bash
-pip install pandas numpy matplotlib seaborn yfinance
-```
-Open Jupyter Notebook
 
-📈 Results and Conclusions
-Stocks:
-The notebook demonstrates how risk and return vary across different sectors (Technology, Energy, Healthcare) and how diversification impacts portfolio performance.
+- O notebook de ações baixa os dados direto do Yahoo Finance (precisa de internet).
+- As bases do notebook 911 não estão no repositório: baixe o `911.csv` (dataset "Emergency - 911 Calls", Montgomery County, no Kaggle) e um `students.csv` de desempenho de estudantes, e salve ambos na mesma pasta do notebook.
 
-911:
-The analysis revealed that EMS (Emergency Medical Services) calls are the most common and that there are specific peak hours for traffic-related incidents during business hours.
+## Minha contribuição
 
-✒️ Author
-Felipe Gurgel Araujo
+Projeto individual: código, modelagem e documentação de minha autoria.
 
-Note: This project was developed as part of an academic activity.
+## Demonstração
+
+Os gráficos (preços ajustados, histogramas de retornos, médias móveis, Bandas de Bollinger, fronteira eficiente, contagens por motivo e mapas de calor) ficam salvos nas saídas dos próprios notebooks e podem ser vistos diretamente no GitHub, abrindo cada arquivo `.ipynb`.
+
+## Resultados
+
+- **Ações:** o notebook compara risco e retorno dos ativos pelo índice de Sharpe e mostra, na fronteira eficiente, como a combinação de ativos muda a volatilidade da carteira para cada retorno esperado.
+- **911:** as chamadas de emergência médica (EMS) são o motivo mais frequente, e as ocorrências de trânsito se concentram em horários comerciais.
